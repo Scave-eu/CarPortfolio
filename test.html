@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        body {
+            background-color: #1a1a1a;
+            height: 100vh;
+            padding: 0;
+            margin: 0;
+            box-sizing: border-box;
+        }
+            .container {
+                width: 100%;
+                height: 100%;
+                margin-top: 20%;
+                display: flex;
+                align-items: center;
+
+            }
+
+                .bmw {
+                    width: 1200px;
+                    transform: translateX(-1000px);
+                }
+
+    </style>
+</head>
+<body>
+    
+    <div class="container">
+
+        <img id="bmw" class="bmw" src="5.png" >
+
+    </div>
+    
+
+
+</body>
+
+
+
+
+
+<script>
+    let bmw = document.getElementById("bmw");
+
+    // var oldScrollY = window.scrollY;
+
+
+    // window.onscroll = function(e) {
+    //     const computedStyle = getComputedStyle(bmw);
+    //     const transformMatrix = new DOMMatrixReadOnly(computedStyle.transform);
+    //     const translateXValue = transformMatrix.m41;
+
+    //     if(oldScrollY < window.scrollY) {
+    //         let newTranslateXValue = translateXValue + 1
+    //         console.log(newTranslateXValue)
+    //     } else {
+    //         let newTranslateXValue = translateXValue - 1
+    //         console.log(newTranslateXValue)
+    //     }
+    //     oldScrollY = window.scrollY;
+    // }
+
+
+
+
+    // const bmwElement = document.getElementById('bmw');
+// let translateXValue = 0;
+
+function handleScroll() {
+    const computedStyle = getComputedStyle(bmw);
+    const transformMatrix = new DOMMatrixReadOnly(computedStyle.transform);
+    let translateXValue = transformMatrix.m41;
+
+    const newTranslateXValue = translateXValue + (window.scrollY > 0 ? 1 : -1);
+    bmw.style.transform = `translateX(${newTranslateXValue}px)`;
+    translateXValue = newTranslateXValue;
+    console.log(newTranslateXValue)
+}
+
+window.addEventListener('scroll', handleScroll);
+
+</script>
+
+
+
+</html>
