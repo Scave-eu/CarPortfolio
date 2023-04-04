@@ -1,0 +1,198 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        body {
+            background-color: #1a1a1a;
+            /* height: 100vh; */
+            padding: 0;
+            margin: 0;
+            overflow-x: hidden;
+            box-sizing: border-box;
+        }
+
+
+        .main {
+            width: 100%;
+            height: 100%;
+        }            
+
+            .main-bg {
+                width: 100%;
+                height: 100%;
+                background-image: url("main.PNG");
+                background-repeat: no-repeat;
+                background-position: center;
+                background-attachment: fixed;
+                background-size: cover;
+                display: flex;
+                align-items: center;
+                justify-content: center;
+            }
+
+                .logo {
+                    width: 80px;
+                    transform: translateY(-70px);
+                    filter: brightness(26%) contrast(120%) saturate(200%) blur(0.8px);
+                }
+            
+            .title {
+                position: absolute;
+                top: 0;
+                left: 0;
+                width: 100%;
+                height: 100%;
+                display: flex;
+                align-items: center;
+                justify-content: center;
+            }
+
+                h1 {
+                    color: #fff;
+                    font-family:'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+                    font-weight: bold;
+                    font-size: 100px;
+                    letter-spacing: 5px;
+                }
+
+
+    </style>
+</head>
+<body>
+
+    <div id="main" class="main section">
+        <div class="main-bg">
+            <div class="bmw-logo">
+                <img src="bmw-logo.png" class="logo">
+            </div>
+        </div>
+        <div class="title">
+            <h1>BMW</h1>
+        </div>
+    </div>
+
+
+
+
+
+
+
+    <div class="e30m3">
+        <div class="main">
+            <h2 class="e30m3-headline">E30 M3</h2>
+        </div>
+        
+        <img class="e30m3-bg" src="img/e30m3/e30m3bg2.jpg">
+        <div class="inner"></div>
+    </div>
+    <style>
+        .inner {
+            width: 100%;
+            /* height: 3000px; */
+        }
+
+        .main {
+            width: 100%;
+            height: 100%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .e30m3 {
+            height: 100%;
+            width: 100vw;
+            position: relative;
+            background-color: #333;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            flex-direction: column;
+        }
+        .e30m3 img {
+            visibility: hidden;
+            opacity: 0;
+            width: 100%;
+            height: 100%;
+            transition: 0.8s;
+            object-fit: cover;
+            position: absolute;
+            top: 0;
+            left: 0;
+            z-index: 1;
+        }
+
+            .e30m3 h2 {
+                color: #fff;
+                font-size: 200px;
+                font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+                z-index: 2;
+                visibility: hidden;
+                opacity: 0;
+                transition: 1s;
+                transform: translateX(-120px);
+            }
+            .show {
+                visibility: visible !important;
+                opacity: 1 !important;
+                transform: translateX(0) !important;
+            }
+    </style>
+    
+    <!-- <section class="bmw-section">
+        <img class="bmw" id="bmw" src="5.PNG">
+    </section>
+
+    <section class="bmw-section">
+        <img class="bmw" id="bmw" src="5.PNG">
+    </section> -->
+    <!-- <div class="container">
+        <div class="car">
+            <img class="bmw" id="bmw" src="5.PNG">
+            <img class="felge" id="felge" src="felge.png">
+        </div>
+
+    </div> -->
+
+
+</body>
+
+
+<script>
+
+const e30m3_headline = document.querySelector(".e30m3-headline")
+
+const e30m3 = document.querySelector(".e30m3")
+
+const e30m3_observer_headline = new IntersectionObserver(entries => {
+    entries.forEach(entry => {
+        e30m3_headline.classList.toggle("show", entry.isIntersecting)
+    });
+}, {
+    threshold: 0.5
+})
+
+e30m3_observer_headline.observe(e30m3)
+
+
+const e30m3_bg = document.querySelector(".e30m3-bg")
+
+const e30m3_observer_background = new IntersectionObserver(entries => {
+    console.log(true)
+    entries.forEach(entry => {
+        e30m3_bg.classList.toggle("show", entry.isIntersecting)
+    });
+}, {
+    threshold: 0.7
+})
+
+e30m3_observer_background.observe(e30m3)
+
+
+</script>
+
+</html>
